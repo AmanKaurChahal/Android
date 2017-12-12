@@ -1,0 +1,16 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.amanp.myapplicationfragmentassignment.TFragment_text">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorAccent"
+        android:text="Paris (French pronunciation: ​[paʁi] (About this sound listen)) is the capital and most populous city of France, with an administrative-limits area of 105 square kilometres (41 square miles) and a 2015 population of 2,229,621.[2] The city is a commune and department, and the capital-heart of the 12,012-square-kilometre (4,638-square-mile) Île-de-France region (colloquially known as the 'Paris Region'), whose 2016 population of 12,142,802 represents roughly 18 percent of the population of France.[5] Since the 17th century, Paris has been one of Europe's major centres of finance, commerce, fashion, science, and the arts."
+        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+        android:textStyle="bold" />
+
+</FrameLayout>
