@@ -1,0 +1,214 @@
+package com.example.amanp.mysimplecalculator;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+
+
+public class MainActivity extends AppCompatActivity
+{
+
+    Button b1,b2,b3,b4,b5,b6,b7,b8,b9,b0;// Numeric buttons declaration
+    Button badd,bminus, bdiv,bmul,bclear,bdot,bequal;//Operator buttons declaration
+    EditText editText;// edittext variable
+    Float val1,val2;// two different variables used to store values to calaculate final result
+    boolean add,sub,div,mul;// boolean variables used to allow only one operation at a time
+    private boolean dot=true;// to deal with decimal number initial value TRUE
+    @Override
+    protected void onCreate(Bundle savedInstanceState)
+    {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        // reference created for all buttons (Numeric,Operator,Edittext)
+
+        b1=(Button)findViewById(R.id.button1);
+        b2=(Button)findViewById(R.id.button2);
+        b3=(Button)findViewById(R.id.button3);
+        b4=(Button)findViewById(R.id.button4);
+        b5=(Button)findViewById(R.id.button5);
+        b6=(Button)findViewById(R.id.button6);
+        b7=(Button)findViewById(R.id.button7);
+        b8=(Button)findViewById(R.id.button8);
+        b9=(Button)findViewById(R.id.button9);
+        b0=(Button)findViewById(R.id.button0);
+        badd=(Button)findViewById(R.id.buttonPlus);
+        bminus=(Button)findViewById(R.id.buttonMinus);
+        bdiv=(Button)findViewById(R.id.buttonDivide);
+        bmul=(Button)findViewById(R.id.buttonMul);
+        bdot=(Button)findViewById(R.id.buttonDot);
+        bclear=(Button)findViewById(R.id.buttonClear);
+        bequal=(Button)findViewById(R.id.buttonEqual);
+        editText=(EditText)findViewById(R.id.textArea);
+
+        // code to perform onClick event for each button
+
+        b1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                editText.setText(editText.getText()+"1");// when user click on button1,getText takes value from user
+            }
+        });
+        b2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                editText.setText(editText.getText()+"2");//setText used to store temporary value in edittext and display same value
+            }
+        });
+        b3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                editText.setText(editText.getText()+"3");
+            }
+        });
+        b4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                editText.setText(editText.getText()+"4");
+            }
+        });
+        b5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                editText.setText(editText.getText()+"5");
+            }
+        });
+        b6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                editText.setText(editText.getText()+"6");
+            }
+        });
+        b7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                editText.setText(editText.getText()+"7");
+            }
+        });
+        b8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                editText.setText(editText.getText()+"8");
+            }
+        });
+        b9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                editText.setText(editText.getText()+"9");
+            }
+        });
+        b0.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                editText.setText(editText.getText()+"0");
+            }
+        });
+        bdot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(dot==true)// to ensure validation of .(dot)
+                {
+
+                    editText.setText(editText.getText() + ".");
+                    dot = false;// to restricts the second press of .(dot)
+                }
+            }
+        });
+// to perform Addition on Operands
+        badd.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                val1=Float.parseFloat(editText.getText()+"");// stores first Operand
+                add=true;// allow addition
+                dot=true;//allow decimal number use
+                editText.setText(null);// free edittext area to store second operand
+            }
+        });
+
+    // for Subtraction
+
+        bminus.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                val1=Float.parseFloat(editText.getText()+"");
+                sub=true;
+                dot=true;
+                editText.setText(null);
+            }
+        });
+    // for Division
+        bdiv.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                val1=Float.parseFloat(editText.getText()+"");
+                div=true;
+                dot=true;
+                editText.setText(null);
+            }
+        });
+    // for multiplication
+        bmul.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                val1=Float.parseFloat(editText.getText()+"");
+                mul=true;
+                dot=true;
+                editText.setText(null);
+            }
+        });
+    // clear textArea
+        bclear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                editText.setText("");
+                dot=true;
+            }
+        });
+
+// final calaculations are performed here
+        bequal.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                val2=Float.parseFloat(editText.getText()+"");
+                if (add==true) {
+                    editText.setText(val1+val2+"");// X+Y=C
+                    add=false;
+                }
+                if (sub==true) {
+                    editText.setText(val1-val2+"");//X-Y=C
+                    sub=false;
+                }
+                if (mul==true) {
+                    editText.setText(val1*val2+"");//X*Y=C
+                    mul=false;
+                }
+                if (div==true) {
+                    editText.setText(val1/val2+"");//X/Y=C
+                    div=false;
+                }
+            }
+
+        });
+
+
+    }
+
+}
+
